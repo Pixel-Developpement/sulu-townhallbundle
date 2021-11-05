@@ -1,0 +1,41 @@
+{
+  "name": "pixel/sulu-townhallbundle",
+  "type": "sulu-bundle",
+  "description": "Simple Townhall Bundle for Sulu 2 CMS",
+  "keywords": [
+    "sulu",
+    "suluCms",
+    "news"
+  ],
+  "homepage": "https://github.com/Pixel-Developpement/sulu-townhallbundle",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Pixel Developpement"
+    }
+  ],
+  "require": {
+    "php": "^7.2 || ^8.0",
+    "sulu/content-bundle": "^0.6.1",
+    "sulu/sulu": "2.3.*",
+    "symfony/config": "^4.4 || ^5.0",
+    "symfony/dependency-injection": "^4.4 || ^5.0",
+    "symfony/framework-bundle": "^4.4 || ^5.0",
+    "symfony/http-foundation": "^4.4 || ^5.0",
+    "symfony/http-kernel": "^4.4 || ^5.0"
+  },
+  "require-dev": {
+
+  },
+  "scripts": {
+
+  },
+  "autoload": {
+    "psr-4": {
+      "Pixel\\TownHallBundle\\": ""
+    }
+  },
+  "config": {
+    "sort-packages": true
+  }
+}

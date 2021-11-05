@@ -1,0 +1,5 @@
+townhall.settings_api:
+    type: rest
+    prefix: /admin/api
+    resource: Pixel\Bundle\TownHallBundle\Controller\Admin\SettingsController
+    name_prefix: townhall.
