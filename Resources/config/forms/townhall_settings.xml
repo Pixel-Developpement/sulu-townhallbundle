@@ -4,7 +4,6 @@
       xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/form-1.0.xsd"
 >
     <key>townhall_settings</key>
-
     <properties>
         <property name="townhallName" type="text_line">
             <meta>

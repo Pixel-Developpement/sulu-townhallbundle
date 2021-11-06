@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Pixel\TownHallBundle\Controller\Admin;
 
-use Pixel\TownHallBundle\Entity\Settings;
+use Pixel\TownHallBundle\Entity\Setting;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\View\ViewHandlerInterface;
 use HandcraftedInTheAlps\RestRoutingBundle\Controller\Annotations\RouteResource;
@@ -18,7 +18,7 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 /**
  * @RouteResource("townhall-settings")
  */
-class SettingsController extends AbstractRestController implements ClassResourceInterface, SecuredControllerInterface
+class SettingController extends AbstractRestController implements ClassResourceInterface, SecuredControllerInterface
 {
     private EntityManagerInterface $entityManager;
 
@@ -33,35 +33,35 @@ class SettingsController extends AbstractRestController implements ClassResource
 
     public function getAction(): Response
     {
-        $applicationSettings = $this->entityManager->getRepository(Settings::class)->findOneBy([]);
+        $applicationSetting = $this->entityManager->getRepository(Setting::class)->findOneBy([]);
 
-        return $this->handleView($this->view($applicationSettings ?: new Settings()));
+        return $this->handleView($this->view($applicationSetting ?: new Setting()));
     }
 
     public function putAction(Request $request): Response
     {
-        $applicationSettings = $this->entityManager->getRepository(Settings::class)->findOneBy([]);
-        if (!$applicationSettings) {
-            $applicationSettings = new Settings();
-            $this->entityManager->persist($applicationSettings);
+        $applicationSetting = $this->entityManager->getRepository(Setting::class)->findOneBy([]);
+        if (!$applicationSetting) {
+            $applicationSetting = new Setting();
+            $this->entityManager->persist($applicationSetting);
         }
 
-        $this->mapDataToEntity($request->request->all(), $applicationSettings);
+        $this->mapDataToEntity($request->request->all(), $applicationSetting);
         $this->entityManager->flush();
 
-        return $this->handleView($this->view($applicationSettings));
+        return $this->handleView($this->view($applicationSetting));
     }
 
     /**
      * @param array<string, mixed> $data
      */
-    protected function mapDataToEntity(array $data, Settings $entity): void
+    protected function mapDataToEntity(array $data, Setting $entity): void
     {
         $entity->setTownhallName($data['townhallName']);
     }
 
     public function getSecurityContext(): string
     {
-        return Settings::SECURITY_CONTEXT;
+        return Setting::SECURITY_CONTEXT;
     }
 }

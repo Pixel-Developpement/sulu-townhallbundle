@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Pixel\TownHallBundle\Admin;
 
-use Pixel\TownHallBundle\Entity\Settings;
+use Pixel\TownHallBundle\Entity\Setting;
 use Sulu\Bundle\AdminBundle\Admin\Admin;
 use Sulu\Bundle\AdminBundle\Admin\Navigation\NavigationItem;
 use Sulu\Bundle\AdminBundle\Admin\Navigation\NavigationItemCollection;
@@ -14,7 +14,7 @@ use Sulu\Bundle\AdminBundle\Admin\View\ViewCollection;
 use Sulu\Component\Security\Authorization\PermissionTypes;
 use Sulu\Component\Security\Authorization\SecurityCheckerInterface;
 
-class SettingsAdmin extends Admin
+class SettingAdmin extends Admin
 {
     const TAB_VIEW = 'townhall.settings';
     const FORM_VIEW = 'townhall.settings.form';
@@ -32,7 +32,7 @@ class SettingsAdmin extends Admin
 
     public function configureNavigationItems(NavigationItemCollection $navigationItemCollection): void
     {
-        if ($this->securityChecker->hasPermission(Settings::SECURITY_CONTEXT, PermissionTypes::EDIT)) {
+        if ($this->securityChecker->hasPermission(Setting::SECURITY_CONTEXT, PermissionTypes::EDIT)) {
             $categoryItem = new NavigationItem('townhall.settings');
             $categoryItem->setPosition(0);
             $categoryItem->setView(static::TAB_VIEW);
@@ -43,18 +43,18 @@ class SettingsAdmin extends Admin
 
     public function configureViews(ViewCollection $viewCollection): void
     {
-        if ($this->securityChecker->hasPermission(Settings::SECURITY_CONTEXT, PermissionTypes::EDIT)) {
+        if ($this->securityChecker->hasPermission(Setting::SECURITY_CONTEXT, PermissionTypes::EDIT)) {
             $viewCollection->add(
             // sulu will only load the existing entity if the path of the form includes an id attribute
                 $this->viewBuilderFactory->createResourceTabViewBuilder(static::TAB_VIEW, '/townhall-settings/:id')
-                    ->setResourceKey(Settings::RESOURCE_KEY)
+                    ->setResourceKey(Setting::RESOURCE_KEY)
                     ->setAttributeDefault('id', '-')
             );
 
             $viewCollection->add(
                 $this->viewBuilderFactory->createFormViewBuilder(static::FORM_VIEW, '/details')
-                    ->setResourceKey(Settings::RESOURCE_KEY)
-                    ->setFormKey(Settings::FORM_KEY)
+                    ->setResourceKey(Setting::RESOURCE_KEY)
+                    ->setFormKey(Setting::FORM_KEY)
                     ->setTabTitle('sulu_admin.details')
                     ->addToolbarActions([new ToolbarAction('sulu_admin.save')])
                     ->setParent(static::TAB_VIEW)
@@ -69,8 +69,8 @@ class SettingsAdmin extends Admin
     {
         return [
             self::SULU_ADMIN_SECURITY_SYSTEM => [
-                'Settings' => [
-                    Settings::SECURITY_CONTEXT => [
+                'Setting' => [
+                    Setting::SECURITY_CONTEXT => [
                         PermissionTypes::VIEW,
                         PermissionTypes::EDIT,
                     ],

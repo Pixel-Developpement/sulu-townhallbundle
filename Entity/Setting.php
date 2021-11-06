@@ -9,10 +9,10 @@ use Sulu\Component\Persistence\Model\AuditableTrait;
 
 /**
  * @ORM\Entity()
- * @ORM\Table(name="townall_settings")
+ * @ORM\Table(name="townall_setting")
  * @Serializer\ExclusionPolicy("all")
  */
-class Settings implements AuditableInterface
+class Setting implements AuditableInterface
 {
     use AuditableTrait;
 
