@@ -30,10 +30,10 @@
             <entity-name>Pixel\TownHallBundle\Entity\Report</entity-name>
         </property>
 
-        <property name="date" visibility="always" searchability="yes" translation="townhall.date">
+        <property name="date" visibility="always" searchability="yes" type="date" translation="townhall.date">
             <field-name>dateReport</field-name>
             <entity-name>Pixel\TownHallBundle\Entity\Report</entity-name>
-            <filter type="datetime" />
+            <filter type="date" />
         </property>
 
         <property name="created" translation="sulu_admin.created" type="datetime" visibility="yes">
