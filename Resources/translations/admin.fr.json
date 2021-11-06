@@ -1,4 +1,8 @@
 {
+  "townhall": "Mairie",
   "townhall.settings": "Gestion des mairies",
-  "townhall_settings.townhallName": "Nom de la mairie"
+  "townhall_settings.townhallName": "Nom de la mairie",
+  "townhall.reports": "Comptes rendus",
+  "townhall.date": "Date",
+  "townhall.document": "Fichier (pdf)"
 }

@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<form xmlns="http://schemas.sulu.io/template/template"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/form-1.0.xsd"
+>
+    <key>report_details</key>
+    <properties>
+        <property name="dateReport" type="date" mandatory="true">
+            <meta>
+                <title>townhall.date</title>
+            </meta>
+        </property>
+        <property name="document" type="single_media_selection">
+            <meta>
+                <title>townhall.document</title>
+            </meta>
+            <params>
+                <param name="types" value="document"/>
+            </params>
+        </property>
+    </properties>
+</form>

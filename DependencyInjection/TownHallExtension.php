@@ -29,10 +29,21 @@ class TownHallExtension extends Extension implements PrependExtensionInterface
                             __DIR__ . '/../Resources/config/forms',
                         ],
                     ],
+                    'lists' => [
+                        'directories' => [
+                            __DIR__ . '/../Resources/config/lists',
+                        ],
+                    ],
                     'resources' => [
                         'townhall_settings' => [
                             'routes' => [
                                 'detail' => 'townhall.get_townhall-settings',
+                            ],
+                        ],
+                        'reports' => [
+                            'routes' => [
+                                'detail' => 'townhall.get_report',
+                                'list' => 'townhall.get_reports',
                             ],
                         ]
                     ],
