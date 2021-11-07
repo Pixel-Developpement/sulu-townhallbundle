@@ -1,0 +1,62 @@
+<?xml version="1.0" ?>
+<form xmlns="http://schemas.sulu.io/template/template"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/form-1.0.xsd"
+>
+    <key>association_details</key>
+    <properties>
+        <property name="name" colspan="10" type="text_line" mandatory="true">
+            <meta>
+                <title>townhall.association.name</title>
+            </meta>
+        </property>
+        <property name="isActive" colspan="2" type="checkbox">
+            <meta>
+                <title>townhall.isActive</title>
+            </meta>
+            <params>
+                <param name="type" value="toggler"/>
+                <param name="default_value" value="true"/>
+            </params>
+        </property>
+        <property name="routePath" type="route" mandatory="true" colspan="12">
+            <meta>
+                <title>sulu_admin.url</title>
+            </meta>
+
+            <params>
+                <param name="entity_class" value="Pixel\TownHallBundle\Entity\Association"/>
+                <param name="route_schema" value="/associations/{implode('-', object)}"/>
+            </params>
+        </property>
+        <property name="logo" colspan="6" type="single_media_selection">
+            <meta>
+                <title>townhall.logo</title>
+            </meta>
+            <params>
+                <param name="types" value="image"/>
+            </params>
+        </property>
+
+        <property name="category" colspan="6" type="single_category_selection">
+            <meta>
+                <title>townhall.category</title>
+            </meta>
+            <params>
+                <param name="request_parameters" type="collection">
+                    <param name="rootKey" value="association"/>
+                </param>
+            </params>
+        </property>
+        <property name="description" colspan="12" type="text_editor">
+            <meta>
+                <title>townhall.description</title>
+            </meta>
+        </property>
+        <property name="location" type="location" mandatory="true">
+            <meta>
+                <title>townhall.location</title>
+            </meta>
+        </property>
+    </properties>
+</form>

@@ -26,6 +26,28 @@
             <tag name="sulu.context" context="admin"/>
         </service>
 
+        <service id="pixel_townhall.associations_route_controller"
+                 class="Pixel\TownHallBundle\Controller\Admin\AssociationController"
+                 public="true">
+            <argument type="service"  id="pixel_townhall.list.representation"/>
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+            <argument type="service" id="sulu_media.media_manager"/>
+            <argument type="service" id="fos_rest.view_handler.default"/>
+            <argument type="service" id="sulu_category.category_manager"/>
+            <argument type="service" id="sulu_core.webspace.webspace_manager"/>
+            <argument type="service" id="sulu_route.manager.route_manager"/>
+            <argument type="service" id="sulu.repository.route"/>
+            <argument type="service" id="security.token_storage"/>
+            <tag name="sulu.context" context="admin"/>
+        </service>
+
+        <!-- Routing -->
+        <service id="pixel_townhall.association.route" class="Pixel\TownHallBundle\Routing\AssociationRouteDefaultsProvider">
+            <argument type="service" id="sulu_admin.view_builder_factory"/>
+
+            <tag name="sulu_route.defaults_provider"/>
+        </service>
+
         <!-- Admin -->
         <service id="pixel_townhall.admin" class="Pixel\TownHallBundle\Admin\SettingAdmin">
             <argument type="service" id="sulu_admin.view_builder_factory"/>
@@ -35,6 +57,13 @@
         </service>
 
         <service id="pixel_townhall.report" class="Pixel\TownHallBundle\Admin\ReportAdmin">
+            <argument type="service" id="sulu_admin.view_builder_factory"/>
+            <argument type="service" id="sulu_security.security_checker"/>
+            <tag name="sulu.admin"/>
+            <tag name="sulu.context" context="admin"/>
+        </service>
+
+        <service id="pixel_townhall.association" class="Pixel\TownHallBundle\Admin\AssociationAdmin">
             <argument type="service" id="sulu_admin.view_builder_factory"/>
             <argument type="service" id="sulu_security.security_checker"/>
             <tag name="sulu.admin"/>

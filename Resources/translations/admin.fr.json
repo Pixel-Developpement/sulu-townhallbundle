@@ -4,5 +4,13 @@
   "townhall_settings.townhallName": "Nom de la mairie",
   "townhall.reports": "Comptes rendus",
   "townhall.date": "Date",
-  "townhall.document": "Fichier (pdf)"
+  "townhall.document": "Fichier (pdf)",
+  "directory": "Annuaire",
+  "townhall.associations": "Associations",
+  "townhall.association.name": "Nom de l'association",
+  "townhall.logo": "Logo",
+  "townhall.category": "Catégorie",
+  "townhall.location": "Localisation",
+  "townhall.isActive": "Activer ?",
+  "townhall.description": "Description"
 }

@@ -45,6 +45,12 @@ class TownHallExtension extends Extension implements PrependExtensionInterface
                                 'detail' => 'townhall.get_report',
                                 'list' => 'townhall.get_reports',
                             ],
+                        ],
+                        'associations' => [
+                            'routes' => [
+                                'detail' => 'townhall.get_association',
+                                'list' => 'townhall.get_associations',
+                            ],
                         ]
                     ],
                 ]
@@ -57,7 +63,9 @@ class TownHallExtension extends Extension implements PrependExtensionInterface
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+        $loaderYaml = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.xml');
+        $loaderYaml->load('services.yaml');
         //$this->configurePersistence($config['objects'], $container);
 
     }
