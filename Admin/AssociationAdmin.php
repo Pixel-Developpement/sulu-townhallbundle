@@ -20,6 +20,7 @@ class AssociationAdmin extends Admin
     public const ADD_FORM_VIEW = 'townhall.association.add_form';
     public const ADD_FORM_DETAILS_VIEW = 'townhall.association.add_form.details';
     public const EDIT_FORM_VIEW = 'townhall.association.edit_form';
+    public const EDIT_FORM_SEO_VIEW = 'townhall.association.seo.edit_form';
     public const EDIT_FORM_DETAILS_VIEW = 'townhall.association.edit_form.details';
 
     private ViewBuilderFactoryInterface $viewBuilderFactory;
@@ -110,6 +111,19 @@ class AssociationAdmin extends Admin
                     ->setFormKey(Association::FORM_KEY)
                     ->setTabTitle('sulu_admin.details')
                     ->addToolbarActions($formToolbarActions)
+                    ->setParent(static::EDIT_FORM_VIEW)
+            );
+
+            $viewCollection->add(
+                $this->viewBuilderFactory
+                    ->createPreviewFormViewBuilder(static::EDIT_FORM_SEO_VIEW, '/seo')
+                    ->disablePreviewWebspaceChooser()
+                    ->setResourceKey(Association::RESOURCE_KEY)
+                    ->setFormKey('seo')
+                    ->setTabTitle('sulu_page.seo')
+                    ->addToolbarActions($formToolbarActions)
+                    ->setTitleVisible(true)
+                    ->setTabOrder(2048)
                     ->setParent(static::EDIT_FORM_VIEW)
             );
         }

@@ -82,6 +82,13 @@ class Association implements AuditableInterface
      */
     private string $routePath;
 
+    /**
+     * @ORM\Column(type="json", nullable=true)
+     *
+     * @Serializer\Expose()
+     */
+    private ?array $seo = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -206,5 +213,23 @@ class Association implements AuditableInterface
     {
         $this->routePath = $routePath;
     }
+
+    /**
+     * @return array|null
+     */
+    public function getSeo(): ?array
+    {
+        return $this->seo;
+    }
+
+    /**
+     * @param array|null $seo
+     */
+    public function setSeo(?array $seo): void
+    {
+        $this->seo = $seo;
+    }
+
+
 
 }

@@ -98,6 +98,7 @@ class AssociationController extends AbstractRestController implements ClassResou
     {
         $logoId = $data['logo']['id'] ?? null;
         $location = $data['location'] ?? null;
+        $seo = (isset($data['ext']['seo'])) ?  $data['ext']['seo'] : null;
         $description = $data['description'] ?? null;
         $isActive = $data['isActive'] ?? null;
         $categoryId = (isset($data['category']['id'])) ? $data['category']['id'] : $data['category'];
@@ -107,6 +108,7 @@ class AssociationController extends AbstractRestController implements ClassResou
         $entity->setRoutePath($data['routePath']);
         $entity->setIsActive($isActive);
         $entity->setDescription($description);
+        $entity->setSeo($seo);
         $entity->setCategory($this->categoryManager->findById($categoryId));
         $entity->setLogo($logoId ? $this->mediaManager->getEntityById($logoId) : null);
     }
